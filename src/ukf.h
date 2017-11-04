@@ -95,6 +95,13 @@ public:
   VectorXd z_out_radar;
   MatrixXd S_out_radar;
 
+  VectorXd z_out_lidar;
+  MatrixXd S_out_lidar;
+
+  int n_z_lidar;
+  MatrixXd Zsig_lidar;
+
+
   double NIS_radar_;
   double NIS_laser_;
 
@@ -136,7 +143,10 @@ public:
   void AugmentedSigmaPoints(void);
   void SigmaPointPrediction(double delta_t);
   void PredictMeanAndCovariance(void);
+
   void PredictRadarMeasurement(void);
+
+  void PredictLidarMeasurement(void);
 };
 
 #endif /* UKF_H */
