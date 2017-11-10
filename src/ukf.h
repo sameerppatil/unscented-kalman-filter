@@ -70,23 +70,23 @@ public:
   //create sigma point matrix
   MatrixXd Xsig_aug;
 
-  //Process noise standard deviation longitudinal acceleration in m/s^2
-  double std_a = 0.2;
+  // //Process noise standard deviation longitudinal acceleration in m/s^2
+  // double std_a = 0.2;
 
-  //Process noise standard deviation yaw acceleration in rad/s^2
-  double std_yawdd = 0.2;
+  // //Process noise standard deviation yaw acceleration in rad/s^2
+  // double std_yawdd = 0.2;
 
   //create matrix with predicted sigma points as columns
   MatrixXd Xsig_pred;
 
-  //radar measurement noise standard deviation radius in m
-  double std_radr = 0.3;
+  // //radar measurement noise standard deviation radius in m
+  // double std_radr = 0.3;
 
-  //radar measurement noise standard deviation angle in rad
-  double std_radphi = 0.0175;
+  // //radar measurement noise standard deviation angle in rad
+  // double std_radphi = 0.0175;
 
-  //radar measurement noise standard deviation radius change in m/s
-  double std_radrd = 0.1;
+  // //radar measurement noise standard deviation radius change in m/s
+  // double std_radrd = 0.1;
 
   //create matrix for sigma points in measurement space
   int n_z_radar;

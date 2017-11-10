@@ -24,10 +24,10 @@ UKF::UKF() {
   P_ = MatrixXd(5, 5);
 
   // Process noise standard deviation longitudinal acceleration in m/s^2
-  std_a_ = 30;
+  std_a_ = 1;
 
   // Process noise standard deviation yaw acceleration in rad/s^2
-  std_yawdd_ = 30;
+  std_yawdd_ = 0.5;
 
   // Laser measurement noise standard deviation position1 in m
   std_laspx_ = 0.15;
@@ -463,8 +463,8 @@ void UKF::AugmentedSigmaPoints(void) {
   //create augmented covariance matrix
   P_aug.fill(0.0);
   P_aug.topLeftCorner(5,5) = P_;
-  P_aug(5,5) = std_a*std_a;
-  P_aug(6,6) = std_yawdd*std_yawdd;
+  P_aug(5,5) = std_a_*std_a_;
+  P_aug(6,6) = std_yawdd_*std_yawdd_;
 
   //create square root matrix
   MatrixXd L = P_aug.llt().matrixL();
@@ -648,9 +648,9 @@ void UKF::PredictRadarMeasurement(void) {
 
   //add measurement noise covariance matrix
   MatrixXd R = MatrixXd(n_z_radar,n_z_radar);
-  R <<    std_radr*std_radr, 0, 0,
-          0, std_radphi*std_radphi, 0,
-          0, 0,std_radrd*std_radrd;
+  R <<    std_radrd_*std_radrd_, 0, 0,
+          0, std_radphi_*std_radphi_, 0,
+          0, 0,std_radrd_*std_radrd_;
   S = S + R;
 
 
